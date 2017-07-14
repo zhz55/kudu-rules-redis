@@ -1,8 +1,9 @@
 import org.apache.kudu.spark.kudu._
-import org.apache.spark.SparkConf
-import org.apache.spark.sql.SparkSession
+import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.sql.{Row, SparkSession}
 import rules.TableRules
 import model.{VehiclePositionFromArray, VehiclePositionFromElement}
+import org.apache.spark.rdd.RDD
 
 /**
   * Created by Kasim on 2017/7/12.
@@ -16,13 +17,20 @@ object GetKuduData {
       "kudu.table" -> "impala::position.CTTIC_VehiclePosition_201707_2_test")).kudu
     import sparkSession.implicits._
     // second way to get kudu data
-    /*
+
     val kuduContext = new KuduContext("nn01")
     kuduContext.kuduRDD(sparkSession.sparkContext, "impala::position.CTTIC_VehiclePosition_201707_err_test", Seq("vehicleno", "positiontime")).
       foreach {
         record => println(record.mkString(","))
       }
-    */
+
+    def kuduRDD(sc: SparkContext,
+                tableName: String,
+                columnProjection: Seq[String] = Nil): RDD[Row] = {
+      new KuduRDD("nn01", 1024*1024*20, columnProjection.toArray, Array(),
+        kuduContext.syncClient.openTable(tableName), kuduContext, sc)
+    }
+
     // 86400
     val tableRules = new TableRules
 
