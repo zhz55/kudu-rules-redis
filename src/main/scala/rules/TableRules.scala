@@ -2,10 +2,12 @@ package rules
 
 import java.util.{Calendar, TimeZone}
 
+import org.apache.spark.sql.Row
+
 /**
   * Created by Kasim on 2017/7/12.
   */
-class TableRules {
+class TableRules extends Serializable{
 
   // 2 ways to get yesterday 00:00:00 in unixtime
   def oneDayPeriod() : Long = {
@@ -21,6 +23,5 @@ class TableRules {
     // second way
     (System.currentTimeMillis()/(1000*3600*24)*(1000*3600*24) - TimeZone.getDefault.getRawOffset - 86400000)/1000
   }
-
 
 }

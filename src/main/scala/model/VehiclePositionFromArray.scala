@@ -3,28 +3,24 @@ package model
 /**
   * Created by Kasim on 2017/7/13.
   */
-class VehiclePositionFromArray(dataArray: Array[String]) {
-  val vehicleno : String = dataArray(0)
-  val platecolor : Int = dataArray(1).toInt
-  val positiontime : Long = dataArray(2).toLong
-  val accesscode : Int = dataArray(3).toInt
-  val city : Int = dataArray(4).toInt
-  val curaccesscode : Int = dataArray(5).toInt
-  val trans : Int = dataArray(6).toInt
-  val updatetime : Long = dataArray(7).toLong
-  val encrypt : Int = dataArray(8).toInt
-  val lon : Int = dataArray(9).toInt
-  val lat : Int = dataArray(10).toInt
-  val vec1 : Int = dataArray(11).toInt
-  val vec2 : Int = dataArray(12).toInt
-  val vec3 : Int = dataArray(13).toInt
-  val direction : Int = dataArray(14).toInt
-  val altitude : Int = dataArray(15).toInt
-  val state : Long = dataArray(16).toLong
-  val alarm : Long = dataArray(17).toLong
-  val reserved : String = dataArray(18)
-  val errorcode : String = dataArray(19)
-  val roadcode : Int = dataArray(20).toInt
+
+/*
+class VehiclePositionFromArray(dataSeq: Seq[Any]) {
+  val vehicleno : String = dataSeq(0).toString
+  val platecolor : Int = dataSeq(1).toString.toInt
+  val positiontime : Long = dataSeq(2).toString.toLong
+  val accesscode : Int = dataSeq(3).toString.toInt
+  val city : Int = dataSeq(4).toString.toInt
+  val curaccesscode : Int = dataSeq(5).toString.toInt
+  val trans : Int = dataSeq(6).toString.toInt
+
+  val lon : Int = dataSeq(7).toString.toInt
+  val lat : Int = dataSeq(8).toString.toInt
+
+  val state : Long = dataSeq(9).toString.toLong
+  val alarm : Long = dataSeq(10).toString.toLong
+
+  val errorcode : String = dataSeq(11).toString
 
   var distance : Double = 0
 
@@ -36,3 +32,4 @@ class VehiclePositionFromArray(dataArray: Array[String]) {
     vehicleno + "_" + platecolor.toString + "_" + accesscode + "_" + positiontime
   }
 }
+*/
